@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> val(10005);
+int val[10005];
 
 bool subsetSum(int i, int sum){
     if(sum == 0) return true;    
