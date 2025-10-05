@@ -4,7 +4,7 @@ using namespace std;
 int val[1005];
 int dp[1005][1005];
 
-int subsetSum(int i, int sum) {
+bool subsetSum(int i, int sum) {
     if (sum == 0) return true;
     if (i < 0) return false;
 
@@ -27,26 +27,31 @@ int main() {
 
     int n;
     cin >> n;
-    for (int i = 0; i < n; i++)
+    int sum = 0;
+    for (int i = 0; i < n; i++){
         cin >> val[i];
+        sum += val[i];
+    }
 
-    int sum;
-    cin >> sum;
+    if(sum % 2 == 1) cout << "NO" << '\n';
+    else{
+        // Initialize DP table
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j <= sum; j++)
+                dp[i][j] = -1;
 
-    // Initialize DP table
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j <= sum; j++)
-            dp[i][j] = -1;
-
-    cout << subsetSum(n - 1, sum) << '\n'; // count
+        if(subsetSum(n - 1, sum/2))
+            cout << "YES\n";
+        else
+            cout << "NO\n";
+    }
 
     return 0;
 }
 
 // Input
-// 5
-// 1 2 4 3 5
-// 5
+// 4
+// 1 2 4 7
 
 // Output
-// 3
+// YES
