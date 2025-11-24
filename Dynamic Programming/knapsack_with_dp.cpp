@@ -12,14 +12,14 @@ int knapsack(int i, int mx_wt){ // complexity: O(n * mx_wt)
         return dp[i][mx_wt];
 
     if(wt[i] <= mx_wt){
-        int op1 = knapsack(i - 1, mx_wt - wt[i] ) + val[i];
-        int op2 = knapsack(i - 1, mx_wt);
+        int op1 = knapsack(i-1, mx_wt - wt[i] ) + val[i];
+        int op2 = knapsack(i-1, mx_wt);
 
         dp[i][mx_wt] = max(op1, op2);
         return dp[i][mx_wt];
     }
     else{
-        dp[i][mx_wt] = knapsack(i - 1, mx_wt);
+        dp[i][mx_wt] = knapsack(i-1, mx_wt);
         return dp[i][mx_wt];
     }
 }

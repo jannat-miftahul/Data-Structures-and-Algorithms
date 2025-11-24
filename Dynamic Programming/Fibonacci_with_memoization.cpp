@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int dp[10005];
+long long dp[10005];
 
-int fibonacci(int n) {
+long long fibonacci(long long n) {
     if(n < 2) 
         return n;
     if(dp[n] != -1)
